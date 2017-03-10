@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="production.controller.ProductionReportEditDialogController">
+   <children>
+      <GridPane layoutX="147.0" layoutY="120.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="112.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="134.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="117.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.0" minWidth="10.0" prefWidth="141.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Date:" />
+            <Label text="Technician:" GridPane.rowIndex="1" />
+            <Label text="Hours Worked:" GridPane.rowIndex="2" />
+            <Label text="Vehicle:" GridPane.rowIndex="3" />
+            <Label text="Mileage Out:" GridPane.rowIndex="4" />
+            <Label text="Mileage In:" GridPane.rowIndex="5" />
+            <Label text="Total Production:" GridPane.rowIndex="6" />
+            <Label prefHeight="17.0" prefWidth="75.0" text="Product Used:" GridPane.columnIndex="2" />
+            <Label text="Production Type:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="Material Start:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label text="Material End:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label text="Sq. Ft. Treated:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label text="Rate (per 1,000):" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <TextField fx:id="dateField" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <ComboBox fx:id="technicianComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <TextField fx:id="hoursWorkedField" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <ChoiceBox fx:id="vehicleChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <TextField fx:id="milesOutField" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="milesInField" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="totalProductionField" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <ComboBox fx:id="productUsedComboBox" prefWidth="150.0" GridPane.columnIndex="3">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <ChoiceBox fx:id="productionTypeChoiceBox" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <TextField fx:id="materialStartField" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="materialEndField" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="sqFtTreatedField" GridPane.columnIndex="3" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="rateField" GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </TextField>
+         </children>
+      </GridPane>
+      <ButtonBar layoutX="177.0" layoutY="331.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="165.0">
+        <buttons>
+          <Button mnemonicParsing="false" onAction="#handleOk" text="OK" />
+            <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+        </buttons>
+      </ButtonBar>
+   </children>
+</AnchorPane>
