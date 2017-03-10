@@ -17,6 +17,8 @@ public class ProductionReportController {
 	@FXML
 	private TableColumn<ProductionEntry, String> techColumn;
 	@FXML
+	private TableColumn<ProductionEntry, Number> producedColumn;
+	@FXML
 	private Label dateLabel;
 	@FXML
 	private Label technicianLabel;
@@ -69,6 +71,7 @@ public class ProductionReportController {
 	{
 		dateColumn.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
 		techColumn.setCellValueFactory(cellData -> cellData.getValue().technicianProperty());
+		producedColumn.setCellValueFactory(cellData -> cellData.getValue().totalProductionProperty());
 		
 		entryTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showEntryDetails(newValue));
 	}
@@ -133,12 +136,25 @@ public class ProductionReportController {
 		entryTable.setItems(mainApp.getProductionEntryData());
 	}
 	
+	/**
+	 * Called when the user clicks the new button.  Opens a dialog to edit details for a new ProductionEntry.
+	 */
 	@FXML
-	private void handleNewPerson()
+	private void handleNewProductionEntry()
 	{
+		ProductionEntry tempEntry = new ProductionEntry();
 		
+		boolean okClicked = mainApp.showProductionReportEditDialog(tempEntry, "New Production Entry");
+		
+		if(okClicked)
+		{
+			mainApp.getProductionEntryData().add(tempEntry);
+		}
 	}
 	
+	/**
+	 * Called when the user clicks the edit button.  Opens a dialog to edit details for the currently selected ProductionEntry. 
+	 */
 	@FXML
 	private void handleEditEntry()
 	{
@@ -146,7 +162,7 @@ public class ProductionReportController {
 		
 		if(selectedEntry != null)
 		{
-			boolean okClicked = mainApp.showProductionReportEditDialog(selectedEntry);
+			boolean okClicked = mainApp.showProductionReportEditDialog(selectedEntry, "Edit Production Entry");
 			
 			if(okClicked)
 			{

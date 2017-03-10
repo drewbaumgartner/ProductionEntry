@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="production.controller.ProductionReportController">
    <children>
-      <SplitPane dividerPositions="0.24853228962818003" layoutX="76.0" layoutY="80.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.311804008908686" layoutX="76.0" layoutY="80.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -22,6 +22,7 @@
                     <columns>
                       <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date" />
                         <TableColumn fx:id="techColumn" prefWidth="75.0" text="Technician" />
+                        <TableColumn fx:id="producedColumn" prefWidth="75.0" text="Produced" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -29,7 +30,7 @@
                   </TableView>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="677.0">
                <children>
                   <GridPane layoutX="26.0" layoutY="85.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
@@ -60,7 +61,7 @@
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <Label fx:id="technicianLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="technicianLabel" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
@@ -68,11 +69,11 @@
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <Label fx:id="hoursWorkedLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label fx:id="hoursWorkedLabel" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <Label fx:id="dateLabel" text="Label" GridPane.columnIndex="1">
+                        <Label fx:id="dateLabel" GridPane.columnIndex="1">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
@@ -84,7 +85,7 @@
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <Label fx:id="vehicleLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Label fx:id="vehicleLabel" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
@@ -92,7 +93,7 @@
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <Label fx:id="milesOutLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Label fx:id="milesOutLabel" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
@@ -100,7 +101,7 @@
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <Label fx:id="milesInLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Label fx:id="milesInLabel" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
@@ -108,7 +109,7 @@
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <Label fx:id="totalProductionLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <Label fx:id="totalProductionLabel" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
@@ -116,7 +117,7 @@
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <Label fx:id="productUsedLabel" text="Label" GridPane.columnIndex="3">
+                        <Label fx:id="productUsedLabel" GridPane.columnIndex="3">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
@@ -124,7 +125,7 @@
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <Label fx:id="productionTypeLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                        <Label fx:id="productionTypeLabel" GridPane.columnIndex="3" GridPane.rowIndex="1">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
@@ -136,7 +137,7 @@
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <Label fx:id="materialStartLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                        <Label fx:id="materialStartLabel" GridPane.columnIndex="3" GridPane.rowIndex="2">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
@@ -144,7 +145,7 @@
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <Label fx:id="sqFtTreatedLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                        <Label fx:id="sqFtTreatedLabel" GridPane.columnIndex="3" GridPane.rowIndex="4">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
@@ -152,11 +153,11 @@
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <Label fx:id="rateLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                        <Label fx:id="rateLabel" GridPane.columnIndex="3" GridPane.rowIndex="5">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <Label fx:id="materialEndLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                        <Label fx:id="materialEndLabel" GridPane.columnIndex="3" GridPane.rowIndex="3">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
@@ -204,7 +205,7 @@
                   </GridPane>
                   <ButtonBar layoutX="238.0" layoutY="544.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="232.0">
                     <buttons>
-                      <Button mnemonicParsing="false" text="New" />
+                      <Button mnemonicParsing="false" onAction="#handleNewProductionEntry" text="New" />
                         <Button mnemonicParsing="false" onAction="#handleEditEntry" text="Edit" />
                         <Button mnemonicParsing="false" text="Delete" />
                     </buttons>

@@ -1,7 +1,11 @@
 package production.model;
 
 import java.time.LocalDate;
+
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import javafx.beans.property.*;
+import production.util.LocalDateAdapter;
 
 public class ProductionEntry {
 	
@@ -47,6 +51,7 @@ public class ProductionEntry {
 		this.productionPerHour = new SimpleDoubleProperty(0);
 	}
 	
+	@XmlJavaTypeAdapter(LocalDateAdapter.class)
 	public LocalDate getDate() {return date.get();}
 	public void setDate(LocalDate date) {this.date.set(date);}
 	public ObjectProperty<LocalDate> dateProperty() {return date;}
