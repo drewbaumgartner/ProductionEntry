@@ -3,6 +3,8 @@ package production.util;
 import java.time.LocalDate;
 import java.time.format.*;
 
+import javafx.beans.property.ObjectProperty;
+
 /**
  * Special thanks to Marco Jakob and his tutorial "http://code.makery.ch/library/javafx-8-tutorial/part1/" 
  * 
@@ -15,7 +17,7 @@ public class DateUtil {
 	private static final String DATE_PATTERN = "MM-dd-yyyy";
 	
 	// The date formatter
-	private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_PATTERN);
+	public static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_PATTERN);
 	
 	/**
 	 * Returns the given date as a formatted String using the DATE_PATTERN
@@ -58,4 +60,5 @@ public class DateUtil {
 	{
 		return DateUtil.parse(dateString) != null;
 	}
+
 }

@@ -2,6 +2,7 @@ package production.controller;
 
 import java.time.LocalDate;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
@@ -70,6 +71,16 @@ public class ProductionReportController {
 	private void initialize()
 	{
 		dateColumn.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
+		// Resource used: http://stackoverflow.com/questions/38045546/formatting-an-objectpropertylocaldatetime-in-a-tableview-column
+		// This block of code formats the dateColumn in the TableView to use the specified Date format located in the DateUtil class
+		dateColumn.setCellFactory(col -> new TableCell<ProductionEntry, LocalDate>(){
+			@Override
+			protected void updateItem(LocalDate item, boolean empty){
+				super.updateItem(item, empty);
+				if(empty) setText(null);
+				else setText(String.format(item.format(DateUtil.DATE_FORMATTER)));
+			}
+		});
 		techColumn.setCellValueFactory(cellData -> cellData.getValue().technicianProperty());
 		producedColumn.setCellValueFactory(cellData -> cellData.getValue().totalProductionProperty());
 		
