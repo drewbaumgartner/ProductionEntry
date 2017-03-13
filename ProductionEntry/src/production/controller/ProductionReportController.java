@@ -1,5 +1,7 @@
 package production.controller;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.Locale;
@@ -107,31 +109,33 @@ public class ProductionReportController {
 		// If the ProductionEntry is not null, then populate all the labels with their respective variable values
 		if(entry != null)
 		{
+			DecimalFormat df = new DecimalFormat("#,###.00");
+			
 			dateLabel.setText(DateUtil.format(entry.getDate()));
 			technicianLabel.setText(entry.getTechnician());
-			hoursWorkedLabel.setText(Double.toString(entry.getHoursWorked()));
+			hoursWorkedLabel.setText(df.format(entry.getHoursWorked()));
 			vehicleLabel.setText(entry.getVehicle());
 			milesOutLabel.setText(Integer.toString(entry.getMilesOut()));
 			milesInLabel.setText(Integer.toString(entry.getMilesIn()));
-			totalProductionLabel.setText(Double.toString(entry.getTotalProduction()));
+			totalProductionLabel.setText(DecimalFormat.getCurrencyInstance(new Locale("en", "US")).format(entry.getTotalProduction()));
 			productUsedLabel.setText(entry.getProductUsed());
 			productionTypeLabel.setText(entry.getProductionType());
-			materialStartLabel.setText(Double.toString(entry.getMaterialStart()));
-			materialEndLabel.setText(Double.toString(entry.getMaterialEnd()));
-			sqFtTreatedLabel.setText(Double.toString(entry.getSquareFeetTreated()));
-			rateLabel.setText(Double.toString(entry.getRate()));
+			materialStartLabel.setText(df.format(entry.getMaterialStart()));
+			materialEndLabel.setText(df.format(entry.getMaterialEnd()));
+			sqFtTreatedLabel.setText(df.format(entry.getSquareFeetTreated()));
+			rateLabel.setText(df.format(entry.getRate()));
 
 			// Display the 5 calculated fields
 			entry.calculateMaterialNeeded();
-			materialNeededLabel.setText(Double.toString(entry.getMaterialNeeded()));
+			materialNeededLabel.setText(df.format(entry.getMaterialNeeded()));
 			entry.calculateMaterialUsed();
-			materialUsedLabel.setText(Double.toString(entry.getMaterialUsed()));
+			materialUsedLabel.setText(df.format(entry.getMaterialUsed()));
 			entry.calculateMaterialVariance();
-			materialVarianceLabel.setText(Double.toString(entry.getMaterialVariance()));
+			materialVarianceLabel.setText(DecimalFormat.getPercentInstance().format(entry.getMaterialVariance()));
 			entry.calculateMilesDriven();
 			milesDrivenLabel.setText(Integer.toString(entry.getMilesDriven()));
 			entry.calculateProductionPerHour();
-			productionPerHourLabel.setText(Double.toString(entry.getProductionPerHour()));
+			productionPerHourLabel.setText(DecimalFormat.getCurrencyInstance(new Locale("en", "US")).format(entry.getTotalProduction()));
 		}
 		// Else the ProductionEntry is null, remove all text from each label
 		else

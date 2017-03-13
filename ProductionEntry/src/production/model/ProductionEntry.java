@@ -1,9 +1,7 @@
 package production.model;
 
 import java.time.LocalDate;
-
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 import javafx.beans.property.*;
 import production.util.LocalDateAdapter;
 
@@ -123,7 +121,7 @@ public class ProductionEntry {
 	public double getMaterialVariance() {return materialVariance.get();}
 	public void calculateMaterialVariance()
 	{
-		double materialVariance = this.getMaterialUsed() / this.getMaterialNeeded();
+		double materialVariance = (this.getMaterialUsed() / this.getMaterialNeeded()) - 1.0;
 		this.materialVariance.set(materialVariance);
 	}
 	public DoubleProperty materialVarianceProerpty() {return materialVariance;}
