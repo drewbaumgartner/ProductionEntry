@@ -1,6 +1,8 @@
 package production.controller;
 
+import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.util.Locale;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
@@ -70,9 +72,9 @@ public class ProductionReportController {
 	@FXML
 	private void initialize()
 	{
-		dateColumn.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
 		// Resource used: http://stackoverflow.com/questions/38045546/formatting-an-objectpropertylocaldatetime-in-a-tableview-column
 		// This block of code formats the dateColumn in the TableView to use the specified Date format located in the DateUtil class
+		dateColumn.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
 		dateColumn.setCellFactory(col -> new TableCell<ProductionEntry, LocalDate>(){
 			@Override
 			protected void updateItem(LocalDate item, boolean empty){
@@ -81,8 +83,21 @@ public class ProductionReportController {
 				else setText(String.format(item.format(DateUtil.DATE_FORMATTER)));
 			}
 		});
+		
 		techColumn.setCellValueFactory(cellData -> cellData.getValue().technicianProperty());
+		
+		// Resource used: http://stackoverflow.com/questions/2379221/java-currency-number-format
+		// This block of code is similar to the above block for the Date Column
+		// It will format the number in the producedColumn as a currency (gives it a $ sign and formats to 2 decimal places).
 		producedColumn.setCellValueFactory(cellData -> cellData.getValue().totalProductionProperty());
+		producedColumn.setCellFactory(col -> new TableCell<ProductionEntry, Number>(){
+			@Override
+			protected void updateItem(Number item, boolean empty){
+				super.updateItem(item, empty);
+				if(empty) setText(null);
+				else setText(NumberFormat.getCurrencyInstance(new Locale("en", "US")).format(item));
+			}
+		});
 		
 		entryTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showEntryDetails(newValue));
 	}
