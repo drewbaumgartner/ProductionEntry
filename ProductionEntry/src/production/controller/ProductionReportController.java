@@ -215,4 +215,27 @@ public class ProductionReportController {
 			alert.setContentText("Please select an entry in the table.");
 		}
 	}
+	
+	/**
+	 * Called when the user clicks on the delete button
+	 */
+	@FXML
+	private void handleDeleteEntry()
+	{
+		int selectedIndex = entryTable.getSelectionModel().getSelectedIndex();
+		
+		if(selectedIndex >= 0)
+		{
+			entryTable.getItems().remove(selectedIndex);
+		}
+		else
+		{
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.initOwner(mainApp.getPrimaryStage());
+			alert.setTitle("No Selection");
+			alert.setHeaderText("No production entry is selected!");
+			alert.setContentText("Please select a production entry in the table.");
+			alert.showAndWait();
+		}
+	}
 }

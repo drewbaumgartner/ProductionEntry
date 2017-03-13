@@ -207,7 +207,7 @@
                     <buttons>
                       <Button mnemonicParsing="false" onAction="#handleNewProductionEntry" text="New" />
                         <Button mnemonicParsing="false" onAction="#handleEditEntry" text="Edit" />
-                        <Button mnemonicParsing="false" text="Delete" />
+                        <Button mnemonicParsing="false" onAction="#handleDeleteEntry" text="Delete" />
                     </buttons>
                   </ButtonBar>
                </children>
