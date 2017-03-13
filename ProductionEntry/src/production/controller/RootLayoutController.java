@@ -1,10 +1,17 @@
 package production.controller;
 
 import java.io.File;
+import java.util.Optional;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
-
+import javafx.stage.Modality;
+import javafx.stage.WindowEvent;
 import production.MainApp;
 
 /**
@@ -17,6 +24,20 @@ import production.MainApp;
 public class RootLayoutController {
 	//Reference to the main application
 	private MainApp mainApp;
+	
+	// Give access to the exitMenuItem in Scene Builder via FXML.
+	@FXML
+	private MenuItem exitMenuItem;
+	
+	
+	/**
+	 * Initializes an event handler for the exitMenuItem that fires a prompt alerting the user whenever the application is attempted to close
+	 */
+	public void initializeExitMenu()
+	{
+		mainApp.getPrimaryStage().setOnCloseRequest(confirmCloseEventHandler);
+		exitMenuItem.setOnAction(event -> mainApp.getPrimaryStage().fireEvent(new WindowEvent(mainApp.getPrimaryStage(), WindowEvent.WINDOW_CLOSE_REQUEST)));
+	}
 	
 	/**
 	 * This method is called by the main application to give a reference back to itself.
@@ -105,7 +126,24 @@ public class RootLayoutController {
 	@FXML
 	private void handleExit()
 	{
-		System.exit(0);
+		System.out.println("Exit menu selected");
+		
+		//System.exit(0);
 	}
+	
+	private EventHandler<WindowEvent> confirmCloseEventHandler = event -> {
+		Alert closeConfirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to exit? Any unsaved changes will be lost!");
+		Button exitButton = (Button) closeConfirmation.getDialogPane().lookupButton(ButtonType.OK);
+		exitButton.setText("Exit");
+		closeConfirmation.setHeaderText("Confirm Exit");
+		closeConfirmation.initModality(Modality.APPLICATION_MODAL);
+		closeConfirmation.initOwner(mainApp.getPrimaryStage());
+		
+		Optional<ButtonType> closeResponse = closeConfirmation.showAndWait();
+		if(!ButtonType.OK.equals(closeResponse.get()))
+		{
+			event.consume();
+		}
+	};
 	
 }

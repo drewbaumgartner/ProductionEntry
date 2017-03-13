@@ -69,6 +69,7 @@ public class MainApp extends Application{
 			// Give the controller access to the main app
 			RootLayoutController controller = loader.getController();
 			controller.setMainApp(this);
+			controller.initializeExitMenu();
 			
 			// Display the primary stage
 			primaryStage.show();

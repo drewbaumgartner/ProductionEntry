@@ -27,7 +27,7 @@
                      </accelerator>
                   </MenuItem>
                   <MenuItem mnemonicParsing="false" onAction="#handleSaveAs" text="Save As..." />
-                  <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
+                  <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#handleExit" text="Exit" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
