@@ -78,7 +78,7 @@ public class ProductionReportController {
 	
 	public void showEntryDetails(ProductionEntry entry)
 	{
-		// If the ProductionEntry is not null, then populate all the labels with text
+		// If the ProductionEntry is not null, then populate all the labels with their respective variable values
 		if(entry != null)
 		{
 			dateLabel.setText(DateUtil.format(entry.getDate()));
@@ -94,10 +94,17 @@ public class ProductionReportController {
 			materialEndLabel.setText(Double.toString(entry.getMaterialEnd()));
 			sqFtTreatedLabel.setText(Double.toString(entry.getSquareFeetTreated()));
 			rateLabel.setText(Double.toString(entry.getRate()));
+
+			// Display the 5 calculated fields
+			entry.calculateMaterialNeeded();
 			materialNeededLabel.setText(Double.toString(entry.getMaterialNeeded()));
+			entry.calculateMaterialUsed();
 			materialUsedLabel.setText(Double.toString(entry.getMaterialUsed()));
+			entry.calculateMaterialVariance();
 			materialVarianceLabel.setText(Double.toString(entry.getMaterialVariance()));
+			entry.calculateMilesDriven();
 			milesDrivenLabel.setText(Integer.toString(entry.getMilesDriven()));
+			entry.calculateProductionPerHour();
 			productionPerHourLabel.setText(Double.toString(entry.getProductionPerHour()));
 		}
 		// Else the ProductionEntry is null, remove all text from each label
