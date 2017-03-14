@@ -12,7 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -164,7 +164,7 @@ public class RootLayoutController {
 			// Load the FXML file and create a new stage for the pop up dialog
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(mainApp.getClass().getResource("view/TextFileEditor.fxml"));
-			AnchorPane dialog = (AnchorPane) loader.load();
+			BorderPane dialog = (BorderPane) loader.load();
 			
 			// Create the dialog stage
 			Stage dialogStage = new Stage();
