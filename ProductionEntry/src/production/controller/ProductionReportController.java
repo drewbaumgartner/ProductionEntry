@@ -90,7 +90,7 @@ public class ProductionReportController {
 		
 		// Resource used: http://stackoverflow.com/questions/2379221/java-currency-number-format
 		// This block of code is similar to the above block for the Date Column
-		// It will format the number in the producedColumn as a currency (gives it a $ sign and formats to 2 decimal places).
+		// It will format the number in the producedColumn as a US currency (gives it a $ sign and formats to 2 decimal places).
 		producedColumn.setCellValueFactory(cellData -> cellData.getValue().totalProductionProperty());
 		producedColumn.setCellFactory(col -> new TableCell<ProductionEntry, Number>(){
 			@Override

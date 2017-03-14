@@ -119,18 +119,10 @@ public class RootLayoutController {
 			mainApp.saveProductionEntryDataToFile(file);
 		}
 	}
-	
-	/**
-	 * Closes the application
-	 */
-	@FXML
-	private void handleExit()
-	{
-		System.out.println("Exit menu selected");
 		
-		//System.exit(0);
-	}
-	
+	/**
+	 * Used to handle the event for the exitMenuItem
+	 */
 	private EventHandler<WindowEvent> confirmCloseEventHandler = event -> {
 		Alert closeConfirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to exit? Any unsaved changes will be lost!");
 		Button exitButton = (Button) closeConfirmation.getDialogPane().lookupButton(ButtonType.OK);
@@ -145,5 +137,23 @@ public class RootLayoutController {
 			event.consume();
 		}
 	};
+	
+	@FXML
+	private void updateVehicles()
+	{
+		
+	}
+	
+	@FXML
+	private void updateProducts()
+	{
+		
+	}
+	
+	@FXML
+	private void updateTechnicians()
+	{
+		
+	}
 	
 }
