@@ -2,6 +2,8 @@ package production.controller;
 
 import java.util.Collections;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -76,20 +78,33 @@ public class TextFileEditorController {
 		// Sets the cell Factory to TextFields (each cell in the ListView will be a TextField)
 		listView.setCellFactory(TextFieldListCell.forListView());
 		
+		// This EventHandler will fire when the user attempts to submit a change to an item in the ListView
 		listView.setOnEditCommit(new EventHandler<ListView.EditEvent<String>>(){
 
 			@Override
 			public void handle(EditEvent<String> event) {
 				
+				// If the list does not have a value that is equal to the new value that the user typed in, then add it to the list
 				if(!list.contains(event.getNewValue()))
 				{
 					listView.getItems().set(event.getIndex(), event.getNewValue());
 				}
+				// Else the value that the user typed in already exists somewhere in the list
 				else
 				{
 					statusLabel.setText("Changes not saved.  Duplicate entry found!");
 				}
 			}	
+		});
+		
+		// This ChangeListener looks to see when the user selects a different item in the ListView.  When they do, it will clear the statusLabel.
+		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				statusLabel.setText("");
+			}
+			
 		});
 	}
 	
