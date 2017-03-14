@@ -32,10 +32,8 @@ public class TextFileEditorController {
 	private String whichFile;
 	private FileIO fileIO;
 	private Stage dialogStage;
-	
-	
+
 	ObservableList<String> list = FXCollections.observableArrayList();
-	//ObservableSet<String> list = FXCollections.observableSet();
 	
 	public TextFileEditorController()
 	{
@@ -68,7 +66,6 @@ public class TextFileEditorController {
 			textFieldLabel.setText("Enter Product:");
 		}
 		
-		
 		// Sort the list before assigning it to the listView
 		Collections.sort(list);
 		// Assign the list to the listView
@@ -84,10 +81,18 @@ public class TextFileEditorController {
 			@Override
 			public void handle(EditEvent<String> event) {
 				
-				// If the list does not have a value that is equal to the new value that the user typed in, then add it to the list
+				// If the list does not have a value that is equal to the new value then attempt to add the new value to the list
 				if(!list.contains(event.getNewValue()))
 				{
-					listView.getItems().set(event.getIndex(), event.getNewValue());
+					// If the new value is empty, do not save the changes
+					if(event.getNewValue().equals("") || event.getNewValue().length() == 0)
+					{
+						statusLabel.setText("Changes not saved.  Item cannot be blank!");
+					}
+					else
+					{
+						listView.getItems().set(event.getIndex(), event.getNewValue());
+					}	
 				}
 				// Else the value that the user typed in already exists somewhere in the list
 				else
@@ -146,17 +151,18 @@ public class TextFileEditorController {
 		}
 		textField.selectAll();
 	}
-	
-	@FXML
-	private void handleEdit()
-	{
-		// Get selected item from listView and load it into the textBox
-	}
-	
+		
 	@FXML
 	private void handleDelete()
 	{
-		
+		if(listView.getSelectionModel().getSelectedIndex() >= 0)
+		{
+			list.remove(listView.getSelectionModel().getSelectedIndex());
+		}
+		else
+		{
+			statusLabel.setText("Cannot delete.  Nothing is selected in the list!");
+		}
 	}
 	
 	@FXML

@@ -26,7 +26,7 @@
             <ButtonBar layoutX="17.0" layoutY="328.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="18.0">
               <buttons>
                 <Button defaultButton="true" mnemonicParsing="false" onAction="#handleAdd" text="Add" />
-                  <Button mnemonicParsing="false" text="Delete" />
+                  <Button mnemonicParsing="false" onAction="#handleDelete" text="Delete" />
                   <Button mnemonicParsing="false" onAction="#handleDone" text="Done" />
               </buttons>
             </ButtonBar>
