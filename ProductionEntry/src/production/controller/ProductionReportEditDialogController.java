@@ -1,13 +1,6 @@
 package production.controller;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Collections;
-import java.util.Scanner;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -62,7 +55,7 @@ public class ProductionReportEditDialogController {
 	@FXML
 	private void initialize()
 	{			
-		// Test
+		// Read the technician, vehicle, and productUsed files and add their data to their respective Observable List
 		fileIO = new FileIO();
 		technicianList.addAll(fileIO.readFile(FileIO.TECHNICIAN));
 		vehicleList.addAll(fileIO.readFile(FileIO.VEHICLE));

@@ -36,7 +36,7 @@
               <items>
                 <MenuItem mnemonicParsing="false" text="Update Vehicles" />
                   <MenuItem mnemonicParsing="false" text="Update Products" />
-                  <MenuItem mnemonicParsing="false" text="Update Technicians" />
+                  <MenuItem mnemonicParsing="false" onAction="#updateTechnicians" text="Update Technicians" />
               </items>
             </Menu>
         </menus>

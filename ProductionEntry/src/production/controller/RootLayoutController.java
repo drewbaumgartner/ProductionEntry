@@ -1,18 +1,24 @@
 package production.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Optional;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import production.MainApp;
+import production.util.FileIO;
 
 /**
  * The controller for the root layout.  The root layout provides the basic application layout containing a menu bar
@@ -152,8 +158,34 @@ public class RootLayoutController {
 	
 	@FXML
 	private void updateTechnicians()
-	{
-		
+	{	
+		try
+		{
+			// Load the FXML file and create a new stage for the pop up dialog
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(mainApp.getClass().getResource("view/TextFileEditor.fxml"));
+			AnchorPane dialog = (AnchorPane) loader.load();
+			
+			// Create the dialog stage
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Update Technicians");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(mainApp.getPrimaryStage());
+			Scene scene = new Scene(dialog);
+			dialogStage.setScene(scene);
+			
+			// Set the file type into the controller
+			TextFileEditorController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			controller.setFile(FileIO.TECHNICIAN);
+			controller.init();
+			
+			dialogStage.showAndWait();	
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 }
