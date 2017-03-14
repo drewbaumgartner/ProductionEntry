@@ -1,8 +1,19 @@
 package production.controller;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.Scanner;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import production.util.FileIO;
 
 public class TextFileEditorController {
 
@@ -13,6 +24,10 @@ public class TextFileEditorController {
 	
 	private String whichFile;
 	
+	private FileIO fileIO;
+	
+	ObservableList<String> list = FXCollections.observableArrayList();
+	
 	public TextFileEditorController(String whichFile)
 	{
 		this.whichFile = whichFile;
@@ -21,34 +36,23 @@ public class TextFileEditorController {
 	@FXML
 	private void initialize()
 	{
-		if(whichFile == "Technician")
+		fileIO = new FileIO();
+		
+		if(whichFile.equals(FileIO.TECHNICIAN))
 		{
-			readTechnicianFile();
+			list.addAll(fileIO.readFile(FileIO.TECHNICIAN));
 		}
-		else if(whichFile == "Vehicle")
+		else if(whichFile.equals(FileIO.VEHICLE))
 		{
-			readVehicleFile();
+			list.addAll(fileIO.readFile(FileIO.VEHICLE));
 		}
-		else if(whichFile == "Product")
+		else if(whichFile.equals(FileIO.PRODUCT))
 		{
-			readProductFile();
+			list.addAll(fileIO.readFile(FileIO.PRODUCT));
 		}
 		
 	}
 	
-	private void readTechnicianFile()
-	{
-		
-	}
-	
-	private void readVehicleFile()
-	{
-		
-	}
-	
-	private void readProductFile()
-	{
-		
-	}
+
 	
 }

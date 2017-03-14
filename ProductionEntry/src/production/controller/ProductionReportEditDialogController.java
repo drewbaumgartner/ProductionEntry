@@ -17,6 +17,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import production.model.ProductionEntry;
 import production.util.DateUtil;
+import production.util.FileIO;
 
 public class ProductionReportEditDialogController {
 	
@@ -51,108 +52,21 @@ public class ProductionReportEditDialogController {
 	private ProductionEntry entry;
 	private boolean okClicked = false;
 		
+	private FileIO fileIO;
+	
 	ObservableList<String> productionTypeList = FXCollections.observableArrayList("Dry", "Liquid");
 	ObservableList<String> vehicleList = FXCollections.observableArrayList();
 	ObservableList<String> technicianList = FXCollections.observableArrayList();
 	ObservableList<String> productUsedList = FXCollections.observableArrayList();
-		
-	/**
-	 * Reads the "technicians.txt" file and loads each name into ObservableList technicianList
-	 */
-	private void readTechnicianFile()
-	{
-		try
-		{
-			URL url = this.getClass().getResource("/resources/technicians.txt");
-			File file = new File(url.toURI());
-			FileReader techFile = new FileReader(file);
-			BufferedReader bufferReader = new BufferedReader(techFile);
-			Scanner fileScanner = new Scanner(bufferReader);
 			
-			String temp = "";
-			
-			while(fileScanner.hasNext())
-			{
-				temp = fileScanner.nextLine();
-				
-				if(temp != null && temp != "")
-				{
-					technicianList.add(temp);
-				}
-			}
-			fileScanner.close();
-		}
-		catch (FileNotFoundException | URISyntaxException e)
-		{
-			e.printStackTrace();
-		}		
-	}
-	
-	private void readVehicleFile()
-	{
-		try
-		{
-			URL url = this.getClass().getResource("/resources/vehicles.txt");
-			File file = new File(url.toURI());
-			FileReader vehicleFile = new FileReader(file);
-			BufferedReader bufferReader = new BufferedReader(vehicleFile);
-			Scanner fileScanner = new Scanner(bufferReader);
-			
-			String temp = "";
-			
-			while(fileScanner.hasNext())
-			{
-				temp = fileScanner.nextLine();
-				
-				if(temp != null && temp != "")
-				{
-					vehicleList.add(temp);
-				}
-			}
-			fileScanner.close();
-		}
-		catch (FileNotFoundException | URISyntaxException e)
-		{
-			e.printStackTrace();
-		}		
-	}
-	
-	private void readProductFile()
-	{
-		try
-		{
-			URL url = this.getClass().getResource("/resources/products.txt");
-			File file = new File(url.toURI());
-			FileReader productFile = new FileReader(file);
-			BufferedReader bufferReader = new BufferedReader(productFile);
-			Scanner fileScanner = new Scanner(bufferReader);
-			
-			String temp = "";
-			
-			while(fileScanner.hasNext())
-			{
-				temp = fileScanner.nextLine();
-				
-				if(temp != null && temp != "")
-				{
-					productUsedList.add(temp);
-				}
-			}
-			fileScanner.close();
-		}
-		catch (FileNotFoundException | URISyntaxException e)
-		{
-			e.printStackTrace();
-		}		
-	}
-	
 	@FXML
 	private void initialize()
-	{	
-		// Read each text file and store the values to their respective lists
-		readTechnicianFile();
-		readVehicleFile();
-		readProductFile();
+	{			
+		// Test
+		fileIO = new FileIO();
+		technicianList.addAll(fileIO.readFile(FileIO.TECHNICIAN));
+		vehicleList.addAll(fileIO.readFile(FileIO.VEHICLE));
+		productUsedList.addAll(fileIO.readFile(FileIO.PRODUCT));	
 		
 		// Sort lists before assigning them to combo/choice boxes
 		Collections.sort(vehicleList);
