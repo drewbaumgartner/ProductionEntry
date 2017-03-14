@@ -25,7 +25,7 @@
             <Label fx:id="textFieldLabel" alignment="CENTER_RIGHT" layoutX="22.0" layoutY="292.0" prefHeight="17.0" prefWidth="99.0" />
             <ButtonBar layoutX="17.0" layoutY="328.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="18.0">
               <buttons>
-                <Button mnemonicParsing="false" onAction="#handleAdd" text="Add" />
+                <Button defaultButton="true" mnemonicParsing="false" onAction="#handleAdd" text="Add" />
                   <Button mnemonicParsing="false" text="Delete" />
                   <Button mnemonicParsing="false" onAction="#handleDone" text="Done" />
               </buttons>

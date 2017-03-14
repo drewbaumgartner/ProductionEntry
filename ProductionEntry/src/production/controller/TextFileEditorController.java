@@ -144,6 +144,7 @@ public class TextFileEditorController {
 			alert.setContentText("Technician cannot be blank!");
 			alert.showAndWait();
 		}
+		textField.selectAll();
 	}
 	
 	@FXML
