@@ -30,6 +30,7 @@ public class TextFileEditorController {
 	private Label statusLabel;
 	
 	private String fileName;
+	private String fileType; // This will hold "Vehicle" || "Technician" || "Product"
 	private FileIO fileIO;
 	private Stage dialogStage;
 
@@ -54,16 +55,31 @@ public class TextFileEditorController {
 		{
 			list.addAll(fileIO.readFile(FileIO.TECHNICIANS_FILE));
 			textFieldLabel.setText("Enter Technician:");
+			
+			if(fileName.contains("technician"))
+			{
+				fileType = "technician";
+			}
 		}
 		else if(fileName.equals(FileIO.VEHICLES_FILE))
 		{
 			list.addAll(fileIO.readFile(FileIO.VEHICLES_FILE));
 			textFieldLabel.setText("Enter Vehicle:");
+			
+			if(fileName.contains("vehicle"))
+			{
+				fileType = "vehicle";
+			}
 		}
 		else if(fileName.equals(FileIO.PRODUCTS_FILE))
 		{
 			list.addAll(fileIO.readFile(FileIO.PRODUCTS_FILE));
 			textFieldLabel.setText("Enter Product:");
+			
+			if(fileName.contains("product"))
+			{
+				fileType = "product";
+			}
 		}
 		
 		// Sort the list before assigning it to the listView
@@ -137,9 +153,9 @@ public class TextFileEditorController {
 			{
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.initOwner(dialogStage);
-				alert.setTitle("Duplicate Technician");
-				alert.setHeaderText("Duplicate Technician");
-				alert.setContentText("That technician, " + textField.getText() + ", is already entered!");
+				alert.setTitle("Duplicate Found");
+				alert.setHeaderText("Duplicate " + fileType);
+				alert.setContentText("That " + fileType + ", " + textField.getText() + ", is already entered!");
 				alert.showAndWait();
 			}
 		}
@@ -148,8 +164,8 @@ public class TextFileEditorController {
 		{
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.initOwner(dialogStage);
-			alert.setTitle("Blank Technician");
-			alert.setContentText("Technician cannot be blank!");
+			alert.setTitle("Blank Entry");
+			alert.setContentText("The " + fileType + " cannot be blank!");
 			alert.showAndWait();
 		}
 		textField.selectAll();
@@ -174,7 +190,8 @@ public class TextFileEditorController {
 	@FXML
 	private void handleDone()
 	{	
-		//TODO write code for handling file reading, probably in the FileIO class
+		FileIO fileIO = new FileIO();
+		fileIO.saveFile(list, fileName);
 		dialogStage.close();
 	}
 	

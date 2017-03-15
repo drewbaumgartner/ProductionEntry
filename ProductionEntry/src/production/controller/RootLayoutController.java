@@ -147,13 +147,65 @@ public class RootLayoutController {
 	@FXML
 	private void updateVehicles()
 	{
-		
+		try
+		{
+			// Load the FXML file and create a new stage for the pop up dialog
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(mainApp.getClass().getResource("view/TextFileEditor.fxml"));
+			BorderPane dialog = (BorderPane) loader.load();
+			
+			// Create the dialog stage
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Update Vehicles");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(mainApp.getPrimaryStage());
+			Scene scene = new Scene(dialog);
+			dialogStage.setScene(scene);
+			
+			// Set the file type into the controller
+			TextFileEditorController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			controller.setFile(FileIO.VEHICLES_FILE);
+			controller.init();
+			
+			dialogStage.showAndWait();	
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML
 	private void updateProducts()
 	{
-		
+		try
+		{
+			// Load the FXML file and create a new stage for the pop up dialog
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(mainApp.getClass().getResource("view/TextFileEditor.fxml"));
+			BorderPane dialog = (BorderPane) loader.load();
+			
+			// Create the dialog stage
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Update Products");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(mainApp.getPrimaryStage());
+			Scene scene = new Scene(dialog);
+			dialogStage.setScene(scene);
+			
+			// Set the file type into the controller
+			TextFileEditorController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			controller.setFile(FileIO.PRODUCTS_FILE);
+			controller.init();
+			
+			dialogStage.showAndWait();	
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML
