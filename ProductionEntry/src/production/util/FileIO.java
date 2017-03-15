@@ -13,12 +13,12 @@ import javafx.collections.ObservableList;
 
 public class FileIO {
 	
-	private final String TECHNICIANS_FILE = "/resources/technicians.txt";
-	private final String VEHICLES_FILE = "/resources/vehicles.txt";
-	private final String PRODUCTS_FILE = "/resources/products.txt";
-	public static final String TECHNICIAN = "technician";
-	public static final String VEHICLE = "vehicle";
-	public static final String PRODUCT = "product";
+	public static final String TECHNICIANS_FILE = "/resources/technicians.txt";
+	public static final String VEHICLES_FILE = "/resources/vehicles.txt";
+	public static final String PRODUCTS_FILE = "/resources/products.txt";
+	//public static final String TECHNICIAN = "technician";
+	//public static final String VEHICLE = "vehicle";
+	//public static final String PRODUCT = "product";
 	
 	public FileIO()
 	{
@@ -32,15 +32,15 @@ public class FileIO {
 		try
 		{
 			URL url = null;
-			if(fileName == TECHNICIAN)
+			if(fileName == TECHNICIANS_FILE)
 			{
 				url = this.getClass().getResource(TECHNICIANS_FILE);
 			}
-			else if(fileName == VEHICLE)
+			else if(fileName == VEHICLES_FILE)
 			{
 				url = this.getClass().getResource(VEHICLES_FILE);
 			}
-			else if(fileName == PRODUCT)
+			else if(fileName == PRODUCTS_FILE)
 			{
 				url = this.getClass().getResource(PRODUCTS_FILE);
 			}
@@ -71,5 +71,10 @@ public class FileIO {
 			
 			return null;
 		}
+	}
+	
+	public void saveFile(ObservableList<String> list, String fileName)
+	{
+		
 	}
 }

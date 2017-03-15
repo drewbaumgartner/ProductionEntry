@@ -29,7 +29,7 @@ public class TextFileEditorController {
 	@FXML
 	private Label statusLabel;
 	
-	private String whichFile;
+	private String fileName;
 	private FileIO fileIO;
 	private Stage dialogStage;
 
@@ -50,19 +50,19 @@ public class TextFileEditorController {
 	{
 		fileIO = new FileIO();
 		
-		if(whichFile.equals(FileIO.TECHNICIAN))
+		if(fileName.equals(FileIO.TECHNICIANS_FILE))
 		{
-			list.addAll(fileIO.readFile(FileIO.TECHNICIAN));
+			list.addAll(fileIO.readFile(FileIO.TECHNICIANS_FILE));
 			textFieldLabel.setText("Enter Technician:");
 		}
-		else if(whichFile.equals(FileIO.VEHICLE))
+		else if(fileName.equals(FileIO.VEHICLES_FILE))
 		{
-			list.addAll(fileIO.readFile(FileIO.VEHICLE));
+			list.addAll(fileIO.readFile(FileIO.VEHICLES_FILE));
 			textFieldLabel.setText("Enter Vehicle:");
 		}
-		else if(whichFile.equals(FileIO.PRODUCT))
+		else if(fileName.equals(FileIO.PRODUCTS_FILE))
 		{
-			list.addAll(fileIO.readFile(FileIO.PRODUCT));
+			list.addAll(fileIO.readFile(FileIO.PRODUCTS_FILE));
 			textFieldLabel.setText("Enter Product:");
 		}
 		
@@ -113,11 +113,14 @@ public class TextFileEditorController {
 		});
 	}
 	
-	public void setFile(String whichFile)
+	public void setFile(String fileName)
 	{
-		this.whichFile = whichFile;
+		this.fileName = fileName;
 	}
 	
+	/**
+	 * This method handles the onAction event for the Add button.  It checks the input from the textField and if it is not empty and not a duplicate then it is added to the list/listView.
+	 */
 	@FXML
 	private void handleAdd()
 	{	
@@ -151,7 +154,10 @@ public class TextFileEditorController {
 		}
 		textField.selectAll();
 	}
-		
+	
+	/**
+	 * This method handles the onAction even for the Delete button.  The selected item in the listView is deleted from the list/listView.
+	 */
 	@FXML
 	private void handleDelete()
 	{
@@ -167,7 +173,8 @@ public class TextFileEditorController {
 	
 	@FXML
 	private void handleDone()
-	{		
+	{	
+		//TODO write code for handling file reading, probably in the FileIO class
 		dialogStage.close();
 	}
 	

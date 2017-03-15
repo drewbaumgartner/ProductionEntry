@@ -57,9 +57,9 @@ public class ProductionReportEditDialogController {
 	{			
 		// Read the technician, vehicle, and productUsed files and add their data to their respective Observable List
 		fileIO = new FileIO();
-		technicianList.addAll(fileIO.readFile(FileIO.TECHNICIAN));
-		vehicleList.addAll(fileIO.readFile(FileIO.VEHICLE));
-		productUsedList.addAll(fileIO.readFile(FileIO.PRODUCT));	
+		technicianList.addAll(fileIO.readFile(FileIO.TECHNICIANS_FILE));
+		vehicleList.addAll(fileIO.readFile(FileIO.VEHICLES_FILE));
+		productUsedList.addAll(fileIO.readFile(FileIO.PRODUCTS_FILE));	
 		
 		// Sort lists before assigning them to combo/choice boxes
 		Collections.sort(vehicleList);

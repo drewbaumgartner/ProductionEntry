@@ -177,7 +177,7 @@ public class RootLayoutController {
 			// Set the file type into the controller
 			TextFileEditorController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
-			controller.setFile(FileIO.TECHNICIAN);
+			controller.setFile(FileIO.TECHNICIANS_FILE);
 			controller.init();
 			
 			dialogStage.showAndWait();	
