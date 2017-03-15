@@ -30,7 +30,7 @@ public class TextFileEditorController {
 	private Label statusLabel;
 	
 	private String fileName;
-	private String fileType; // This will hold "Vehicle" || "Technician" || "Product"
+	private String fileType; // This will hold "Vehicle" || "Technician" || "Product".  This string is used to provide dynamic output to the Alert dialog windows
 	private FileIO fileIO;
 	private Stage dialogStage;
 
@@ -172,7 +172,7 @@ public class TextFileEditorController {
 	}
 	
 	/**
-	 * This method handles the onAction even for the Delete button.  The selected item in the listView is deleted from the list/listView.
+	 * This method handles the onAction event for the Delete button.  The selected item in the listView is deleted from the list/listView.
 	 */
 	@FXML
 	private void handleDelete()
@@ -187,6 +187,11 @@ public class TextFileEditorController {
 		}
 	}
 	
+	/**
+	 * This method handles the onAction event for the Done button.  It will save the contents of the list and write them to the appropriate file.
+	 * (technicians to technicians.txt; Vehicles to vehicles.txt; Products to products.txt)
+	 * After the file is saved this dialog window will close.
+	 */
 	@FXML
 	private void handleDone()
 	{	

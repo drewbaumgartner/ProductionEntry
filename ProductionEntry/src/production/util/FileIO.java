@@ -15,6 +15,12 @@ import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * This class is used to read and write to the configuration files (technician.txt, vehicles.txt, products.txt).  These files are used to store a list of the available technicians, vehicles,
+ * and products.
+ * @author Drew
+ *
+ */
 public class FileIO {
 	
 	public static final String TECHNICIANS_FILE = "/resources/technicians.txt";
@@ -26,6 +32,11 @@ public class FileIO {
 		
 	}
 	
+	/**
+	 * This method reads the file line by line and creates an Observable list.  Each line in the file is stored as an object in the list.
+	 * @param fileName
+	 * @return the ObservableList object
+	 */
 	public ObservableList<String> readFile(String fileName)
 	{
 		ObservableList<String> list = FXCollections.observableArrayList();
@@ -33,6 +44,7 @@ public class FileIO {
 		try
 		{
 			URL url = null;
+			// Determine which file needs to be read and set the URL accordingly
 			if(fileName == TECHNICIANS_FILE)
 			{
 				url = this.getClass().getResource(TECHNICIANS_FILE);
@@ -46,6 +58,7 @@ public class FileIO {
 				url = this.getClass().getResource(PRODUCTS_FILE);
 			}
 			
+			// Build the Scanner to parse the file line by line
 			File file = new File(url.toURI());
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
@@ -74,6 +87,11 @@ public class FileIO {
 		}
 	}
 	
+	/**
+	 * This method will take an ObservableList and write its items to the given file.  It will write one list item per line.
+	 * @param list
+	 * @param fileName
+	 */
 	public void saveFile(ObservableList<String> list, String fileName)
 	{
 		try
