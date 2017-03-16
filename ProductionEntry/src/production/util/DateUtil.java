@@ -3,8 +3,6 @@ package production.util;
 import java.time.LocalDate;
 import java.time.format.*;
 
-import javafx.beans.property.ObjectProperty;
-
 /**
  * Special thanks to Marco Jakob and his tutorial "http://code.makery.ch/library/javafx-8-tutorial/part1/" 
  * 
