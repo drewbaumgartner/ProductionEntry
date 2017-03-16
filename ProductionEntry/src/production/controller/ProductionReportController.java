@@ -135,7 +135,7 @@ public class ProductionReportController {
 			entry.calculateMilesDriven();
 			milesDrivenLabel.setText(Integer.toString(entry.getMilesDriven()));
 			entry.calculateProductionPerHour();
-			productionPerHourLabel.setText(DecimalFormat.getCurrencyInstance(new Locale("en", "US")).format(entry.getTotalProduction()));
+			productionPerHourLabel.setText(DecimalFormat.getCurrencyInstance(new Locale("en", "US")).format(entry.getProductionPerHour()));
 		}
 		// Else the ProductionEntry is null, remove all text from each label
 		else
